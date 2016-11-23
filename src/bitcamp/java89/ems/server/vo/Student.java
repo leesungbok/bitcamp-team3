@@ -10,9 +10,6 @@ public class Student implements Serializable {
   protected String name;
   protected String email;
   protected String tel;
-  protected boolean working;
-  protected int birthYear;
-  protected String school;
 
   public Student() {}
 
@@ -63,34 +60,10 @@ public class Student implements Serializable {
     this.tel = tel;
   }
 
-  public boolean isWorking() {
-    return working;
-  }
-
-  public void setWorking(boolean working) {
-    this.working = working;
-  }
-
-  public int getBirthYear() {
-    return birthYear;
-  }
-
-  public void setBirthYear(int birthYear) {
-    this.birthYear = birthYear;
-  }
-
-  public String getSchool() {
-    return school;
-  }
-
-  public void setSchool(String school) {
-    this.school = school;
-  }
-
   @Override
   public String toString() {
     return "Student [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", tel="
-        + tel + ", working=" + working + ", birthYear=" + birthYear + ", school=" + school + "]";
+        + tel + "]";
   }
   
 

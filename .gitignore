@@ -6,3 +6,4 @@ lib/
 *.project
 *.gradle
 *.data
+.DS_Store

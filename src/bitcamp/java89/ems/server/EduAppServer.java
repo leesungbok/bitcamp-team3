@@ -13,6 +13,21 @@ import bitcamp.java89.ems.server.controller.ContactDeleteController;
 import bitcamp.java89.ems.server.controller.ContactListController;
 import bitcamp.java89.ems.server.controller.ContactUpdateController;
 import bitcamp.java89.ems.server.controller.ContactViewController;
+import bitcamp.java89.ems.server.controller.CurriculumAddController;
+import bitcamp.java89.ems.server.controller.CurriculumDeleteController;
+import bitcamp.java89.ems.server.controller.CurriculumListController;
+import bitcamp.java89.ems.server.controller.CurriculumUpdateController;
+import bitcamp.java89.ems.server.controller.CurriculumViewController;
+import bitcamp.java89.ems.server.controller.StudentAddController;
+import bitcamp.java89.ems.server.controller.StudentDeleteController;
+import bitcamp.java89.ems.server.controller.StudentListController;
+import bitcamp.java89.ems.server.controller.StudentUpdateController;
+import bitcamp.java89.ems.server.controller.StudentViewController;
+import bitcamp.java89.ems.server.controller.TextbookAddController;
+import bitcamp.java89.ems.server.controller.TextbookDeleteController;
+import bitcamp.java89.ems.server.controller.TextbookListController;
+import bitcamp.java89.ems.server.controller.TextbookUpdateController;
+import bitcamp.java89.ems.server.controller.TextbookViewController;
 
 public class EduAppServer {
   // Command 구현체 보관소
@@ -31,6 +46,21 @@ public class EduAppServer {
     commandMap.put("classroom/view", new ClassroomViewController());
     commandMap.put("classroom/delete", new ClassroomDeleteController());
     commandMap.put("classroom/update", new ClassroomUpdateController());
+    commandMap.put("curriculum/add",    new CurriculumAddController());
+    commandMap.put("curriculum/list",   new CurriculumListController());
+    commandMap.put("curriculum/view",   new CurriculumViewController());
+    commandMap.put("curriculum/delete", new CurriculumDeleteController());
+    commandMap.put("curriculum/update", new CurriculumUpdateController());
+    commandMap.put("student/add",       new StudentAddController());
+    commandMap.put("student/list",      new StudentListController());
+    commandMap.put("student/view",      new StudentViewController());
+    commandMap.put("student/delete",    new StudentDeleteController());
+    commandMap.put("student/update",    new StudentUpdateController());
+    commandMap.put("textbook/add",      new TextbookAddController());
+    commandMap.put("textbook/list",     new TextbookListController());
+    commandMap.put("textbook/view",     new TextbookViewController());
+    commandMap.put("textbook/delete",   new TextbookDeleteController());
+    commandMap.put("textbook/update",   new TextbookUpdateController());
     
   }
   

@@ -21,7 +21,7 @@ public class StudentAddController implements Command {
     }
     
     Student student = new Student();
-    student.setUserId(paramMap.get("userid"));
+    student.setUserId(paramMap.get("userId"));
     student.setPassword(paramMap.get("password"));
     student.setName(paramMap.get("name"));
     student.setTel(paramMap.get("tel"));
