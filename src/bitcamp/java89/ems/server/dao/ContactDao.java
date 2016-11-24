@@ -11,7 +11,7 @@ import bitcamp.java89.ems.server.vo.Contact;
 
 public class ContactDao {
   static ContactDao obj;
-  private String filename = "contact-v1.7.data";
+  private String filename = "contact-v1.8.data";
   private ArrayList<Contact> list;
   
   private ContactDao() {
@@ -27,22 +27,15 @@ public class ContactDao {
 
   @SuppressWarnings("unchecked")
   private void load() {
-    FileInputStream in0 = null;
-    ObjectInputStream in = null;
-    try {
-      in0 = new FileInputStream(this.filename);
-      in = new ObjectInputStream(in0);
+    try (
+      ObjectInputStream in = 
+          new ObjectInputStream(new FileInputStream(this.filename));) {
       list = (ArrayList<Contact>)in.readObject();
     } catch (EOFException e) {
+   // 파일을 모두 읽었다.
     } catch (Exception e) {
       System.out.println("연락처 데이터 로딩 중 오류 발생!");
       list = new ArrayList<Contact>();
-    } finally {
-      try {
-        in.close();
-        in0.close();
-      } catch (Exception e) {
-      }
     }
   }
   
@@ -92,10 +85,13 @@ public class ContactDao {
     return false;
   }
 
-  public void save() throws Exception {
-    FileOutputStream out = new FileOutputStream(this.filename);
-    ObjectOutputStream out2 = new ObjectOutputStream(out);
-    out2.writeObject(list);
-    out2.close();
+  public void save() {
+    try (
+      ObjectOutputStream out = 
+          new ObjectOutputStream(new FileOutputStream(this.filename));) {
+      out.writeObject(list);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

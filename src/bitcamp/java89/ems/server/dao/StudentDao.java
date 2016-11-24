@@ -11,7 +11,7 @@ import bitcamp.java89.ems.server.vo.Student;
 
 public class StudentDao {
   static StudentDao obj;
-  private String filename = "student-v1.7.data";
+  private String filename = "student-v1.8.data";
   private ArrayList<Student> list;
   
   public static StudentDao getInstance() {

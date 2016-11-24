@@ -11,7 +11,7 @@ import bitcamp.java89.ems.server.vo.Textbook;
 
 public class TextbookDao {
   static TextbookDao obj;
-  private String Filename = "textbook-v1.7.data";
+  private String Filename = "textbook-v1.8.data";
   private ArrayList<Textbook>list;
   
   public static TextbookDao getInstance() {

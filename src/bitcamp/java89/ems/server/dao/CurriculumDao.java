@@ -11,7 +11,7 @@ import bitcamp.java89.ems.server.vo.Curriculum;
 
 public class CurriculumDao {
   static CurriculumDao obj;
-  private String filename = "curriculum-v1.7.data";
+  private String filename = "curriculum-v1.8.data";
   private ArrayList<Curriculum> list;
   
   public static CurriculumDao getInstance() {

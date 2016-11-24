@@ -36,26 +36,30 @@ public class EduAppServer {
   
   public EduAppServer() {
     // 클라이언트 요청을 처리할 Command 구현체 준비
-    commandMap.put("contact/add", new ContactAddController());
-    commandMap.put("contact/list", new ContactListController());
-    commandMap.put("contact/view", new ContactViewController());
-    commandMap.put("contact/delete", new ContactDeleteController());
-    commandMap.put("contact/update", new ContactUpdateController());
-    commandMap.put("classroom/add", new ClassroomAddController());
-    commandMap.put("classroom/list", new ClassroomListController());
-    commandMap.put("classroom/view", new ClassroomViewController());
-    commandMap.put("classroom/delete", new ClassroomDeleteController());
-    commandMap.put("classroom/update", new ClassroomUpdateController());
+    commandMap.put("contact/add",       new ContactAddController());
+    commandMap.put("contact/list",      new ContactListController());
+    commandMap.put("contact/view",      new ContactViewController());
+    commandMap.put("contact/delete",    new ContactDeleteController());
+    commandMap.put("contact/update",    new ContactUpdateController());
+    
+    commandMap.put("classroom/add",     new ClassroomAddController());
+    commandMap.put("classroom/list",    new ClassroomListController());
+    commandMap.put("classroom/view",    new ClassroomViewController());
+    commandMap.put("classroom/delete",  new ClassroomDeleteController());
+    commandMap.put("classroom/update",  new ClassroomUpdateController());
+    
     commandMap.put("curriculum/add",    new CurriculumAddController());
     commandMap.put("curriculum/list",   new CurriculumListController());
     commandMap.put("curriculum/view",   new CurriculumViewController());
     commandMap.put("curriculum/delete", new CurriculumDeleteController());
     commandMap.put("curriculum/update", new CurriculumUpdateController());
+    
     commandMap.put("student/add",       new StudentAddController());
     commandMap.put("student/list",      new StudentListController());
     commandMap.put("student/view",      new StudentViewController());
     commandMap.put("student/delete",    new StudentDeleteController());
     commandMap.put("student/update",    new StudentUpdateController());
+    
     commandMap.put("textbook/add",      new TextbookAddController());
     commandMap.put("textbook/list",     new TextbookListController());
     commandMap.put("textbook/view",     new TextbookViewController());

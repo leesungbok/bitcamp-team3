@@ -49,6 +49,7 @@ public class RequestThread extends Thread {
         Command commandHandler = commandMap.get(command[0]);
         if (commandHandler == null) {
           if (command[0].equals("quit")) {
+            System.out.println("클라이언트 종료!");
             break;
           }
           out.println("올바른 명령어가 아닙니다. 다시 입력하세요.");

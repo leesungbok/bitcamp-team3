@@ -26,11 +26,11 @@ public class EduAppClient {
           System.out.printf("%s%s", ((firstLine)?"":"\n"), message);
           firstLine = false;
         }
-        
+
         // 사용자로부터 명령을 입력 받아 출력한다.
         String command = keyScan.nextLine();
         out.println(command);
-        
+
         if (command.toLowerCase().equals("quit")) {
           break;
         }
@@ -59,17 +59,17 @@ public class EduAppClient {
  * student/list
  * student/view?name=엄진영
  * student/delete?name=엄진영
- * student/update?userId=312&password=dz&name=zzzzzz&email=zzz&tel=3120
+ * student/update?userId=312&password=dz&name=엄진영&email=zzz&tel=3120
  * 
  * curriculum/add?name=강죄명&introduce=소개&target=123&document=교재명
  * curriculum/list
  * curriculum/view?name=강죄명
  * curriculum/delete?target=123
- * curriculum/update?name=zz&introduce=zzz&target=zzzz&document=zzzzz
+ * curriculum/update?name=zz&introduce=zzz&target=123&document=zzzzz
  * 
  * textbook/add?title=책제목&author=저자&press=출판사&page=100&price=10000&dayofissue=test
  * textbook/list
  * textbook/view?title=책제목
  * textbook/delete?title=책제목
- * textbook/update?title=z&author=zz&press=zzz&page=999&price=9999&dayofissue=zzzzz
+ * textbook/update?title=책제목&author=zz&press=zzz&page=999&price=9999&dayofissue=zzzzz
  */
