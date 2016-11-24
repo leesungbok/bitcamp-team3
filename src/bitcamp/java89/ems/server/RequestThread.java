@@ -49,7 +49,6 @@ public class RequestThread extends Thread {
         Command commandHandler = commandMap.get(command[0]);
         if (commandHandler == null) {
           if (command[0].equals("quit")) {
-            doQuit();
             break;
           }
           out.println("올바른 명령어가 아닙니다. 다시 입력하세요.");
@@ -65,37 +64,6 @@ public class RequestThread extends Thread {
       try {in.close();} catch (Exception e) {}
       try {out.close();} catch (Exception e) {}
       try {socket.close();} catch (Exception e) {}
-    }
-  }
-  
-  private void doMenu() {
-    out.println("[메뉴]");
-    out.println("1. 강의실 관리");
-    out.println("5. 연락처 관리");
-    out.println("메뉴 이동은 'go 메뉴번호'를 입력하세요");
-    out.println("[명령]");
-    out.println("save   데이터 저장");
-    out.println("quit   프로그램 종료");
-  }
-
-  private void doQuit() {
-    doSave();
-    System.out.println("클라이언트 종료");
-  }
-
-  private void doSave() {
-    try {
-      //classroomController.save();
-    } catch (Exception e) {
-      System.out.println("강의실 정보 저장 중에 오류가 발생했습니다.");
-      e.printStackTrace();
-    }
-
-    try {
-      //contactController.save();
-    } catch (Exception e) {
-      System.out.println("연락처 정보 저장 중에 오류가 발생했습니다.");
-      e.printStackTrace();
     }
   }
 }

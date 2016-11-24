@@ -5,21 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
 
 import bitcamp.java89.ems.server.vo.Textbook;
 
-
 public class TextbookDao {
   static TextbookDao obj;
-  private Scanner in;
-  private PrintStream out;
   private String Filename = "textbook-v1.7.data";
   private ArrayList<Textbook>list;
-  private boolean changed;
   
   public static TextbookDao getInstance() {
     if (obj == null) {
@@ -31,11 +24,7 @@ public class TextbookDao {
   private TextbookDao() {
     this.load();
   }
-
-  public boolean isChanged() {
-    return changed;
-  }
-
+  
   @SuppressWarnings("unchecked")
   private void load() {
     FileInputStream in0 = null;
@@ -64,8 +53,7 @@ public class TextbookDao {
     ObjectOutputStream out = new ObjectOutputStream(out0);
     
     out.writeObject(list);
-        
-    changed = false;
+    
     out.close();
     out0.close();
   }
@@ -85,27 +73,27 @@ public class TextbookDao {
   }
  synchronized public void insert(Textbook textbook) {
    list.add(textbook);
-   changed = true;
+   try {this.save();} catch (Exception e) {e.printStackTrace();}
  }
  
  synchronized public void update(Textbook textbook) {
    for (int i = 0; i <list.size(); i++) {
      if (list.get(i).getTitle().equals(textbook.getTitle())) {
        list.set(i, textbook);
-       changed = true;
        break;
      }
    }
+   try {this.save();} catch (Exception e) {e.printStackTrace();}
  }
 
  synchronized public void delete(String title) {
    for (int i = 0; i < list.size(); i++) {
      if (list.get(i).getTitle().equals(title)) {
        list.remove(i);
-       changed = true;
        break;
      }
    }
+   try {this.save();} catch (Exception e) {e.printStackTrace();}
  }
  
  public boolean existTitle(String title) {

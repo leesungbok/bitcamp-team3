@@ -1,14 +1,9 @@
 package bitcamp.java89.ems.server.controller;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-
 import bitcamp.java89.ems.server.Command;
 import bitcamp.java89.ems.server.dao.TextbookDao;
-import bitcamp.java89.ems.server.vo.Textbook;
-
-
 
 public class TextbookDeleteController implements Command {
   private TextbookDao textbookDao;

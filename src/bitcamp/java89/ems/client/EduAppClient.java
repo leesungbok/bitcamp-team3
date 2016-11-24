@@ -54,6 +54,22 @@ public class EduAppClient {
  * classroom/view?name=자바강의실
  * classroom/delete?name=자바강의실
  * classroom/update?name=자바강의실&location=301호&area=200m^2&time=09:00~21:00&people=400&aircon=false&projector=false
+ * 
+ * student/add?userId=eomjinyoung&password=1234&name=엄진영&email=eomjinyoung@test.com&tel=010-1234-1234
+ * student/list
+ * student/view?name=엄진영
+ * student/delete?name=엄진영
+ * student/update?userId=312&password=dz&name=zzzzzz&email=zzz&tel=3120
+ * 
+ * curriculum/add?name=강죄명&introduce=소개&target=123&document=교재명
+ * curriculum/list
+ * curriculum/view?name=강죄명
+ * curriculum/delete?target=123
+ * curriculum/update?name=zz&introduce=zzz&target=zzzz&document=zzzzz
+ * 
+ * textbook/add?title=책제목&author=저자&press=출판사&page=100&price=10000&dayofissue=test
+ * textbook/list
+ * textbook/view?title=책제목
+ * textbook/delete?title=책제목
+ * textbook/update?title=z&author=zz&press=zzz&page=999&price=9999&dayofissue=zzzzz
  */
-
-

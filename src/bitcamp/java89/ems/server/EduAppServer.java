@@ -61,9 +61,8 @@ public class EduAppServer {
     commandMap.put("textbook/view",     new TextbookViewController());
     commandMap.put("textbook/delete",   new TextbookDeleteController());
     commandMap.put("textbook/update",   new TextbookUpdateController());
-    
   }
-  
+
   private void service() throws Exception {
     ServerSocket ss = new ServerSocket(8888);
     System.out.println("서버 실행 중...");
@@ -78,5 +77,3 @@ public class EduAppServer {
     eduServer.service();
   }
 }
-
-

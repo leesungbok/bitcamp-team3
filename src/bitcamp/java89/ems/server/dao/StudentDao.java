@@ -5,9 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import bitcamp.java89.ems.server.vo.Student;
 
@@ -15,7 +13,6 @@ public class StudentDao {
   static StudentDao obj;
   private String filename = "student-v1.7.data";
   private ArrayList<Student> list;
-  private boolean changed;
   
   public static StudentDao getInstance() {
     if (obj == null) {
@@ -28,12 +25,6 @@ public class StudentDao {
     this.load(); 
   }
 
-  public boolean isChanged() {
-    return changed;
-  }
-
-  
-  
   @SuppressWarnings("unchecked")
   private void load() {
     FileInputStream in0 = null;
@@ -64,8 +55,6 @@ public class StudentDao {
     ObjectOutputStream out = new ObjectOutputStream(out0);
 
     out.writeObject(list);
-    
-    changed = false;
 
     out.close();
     out0.close();
@@ -87,26 +76,27 @@ public class StudentDao {
   
   synchronized public void insert(Student student) {
     list.add(student);
+    try {this.save();} catch (Exception e) {e.printStackTrace();}
   }
    
   synchronized public void update(Student student) {
     for (int i = 0; i < list.size(); i++) {
       if (student.getName().equals(student.getName())) {
         list.set(i, student);
-        changed = true;
         return;
       }
     }
+    try {this.save();} catch (Exception e) {e.printStackTrace();}
   }
   
   synchronized public void delete(String name) {
     for (int i = 0; i < list.size(); i++) {
       if (list.get(i).getName().equals(name)) {
         list.remove(i);
-        changed = true;
         return;
       }
     }
+    try {this.save();} catch (Exception e) {e.printStackTrace();}
   }
 
   public boolean existName(String name) {
