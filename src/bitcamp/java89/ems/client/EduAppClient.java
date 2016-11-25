@@ -47,7 +47,7 @@ public class EduAppClient {
  * contact/list
  * contact/view?name=홍길동
  * contact/delete?email=hong@test.com
- * contact/update?name=홍길동&position=대리&tel=111-1111&email=hong@test.com
+ * contact/update?name=이성복&position=사원&tel=123-4567&email=hong@test.com
  * 
  * classroom/add?name=자바강의실&location=302호&area=100m^2&time=08:00~22:00&people=30&aircon=true&projector=true
  * classroom/list

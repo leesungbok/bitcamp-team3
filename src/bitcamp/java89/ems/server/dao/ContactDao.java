@@ -1,44 +1,24 @@
 package bitcamp.java89.ems.server.dao;
 
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import bitcamp.java89.ems.server.vo.Contact;
 
-public class ContactDao {
+public class ContactDao extends AbstractDao<Contact> {
   static ContactDao obj;
-  private String filename = "contact-v1.8.data";
-  private ArrayList<Contact> list;
   
-  private ContactDao() {
-    this.load();
+  private ContactDao() throws Exception {
+    super("contact-v1.9.data");
   }
   
-  public static ContactDao getInstance() {
+  public static ContactDao getInstance() throws Exception {
     if (obj == null) {
       obj = new ContactDao();
+      obj.load();
     }
     return obj;
   }
 
-  @SuppressWarnings("unchecked")
-  private void load() {
-    try (
-      ObjectInputStream in = 
-          new ObjectInputStream(new FileInputStream(this.filename));) {
-      list = (ArrayList<Contact>)in.readObject();
-    } catch (EOFException e) {
-   // 파일을 모두 읽었다.
-    } catch (Exception e) {
-      System.out.println("연락처 데이터 로딩 중 오류 발생!");
-      list = new ArrayList<Contact>();
-    }
-  }
-  
   public synchronized void insert(Contact contact) {
     list.add(contact);
     try {this.save();} catch (Exception e) {e.printStackTrace();}
@@ -83,15 +63,5 @@ public class ContactDao {
       }
     }
     return false;
-  }
-
-  public void save() {
-    try (
-      ObjectOutputStream out = 
-          new ObjectOutputStream(new FileOutputStream(this.filename));) {
-      out.writeObject(list);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 }

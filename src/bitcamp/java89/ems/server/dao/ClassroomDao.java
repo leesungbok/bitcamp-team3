@@ -1,44 +1,22 @@
 package bitcamp.java89.ems.server.dao;
 
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import bitcamp.java89.ems.server.vo.Classroom;
 
-public class ClassroomDao {
+public class ClassroomDao extends AbstractDao<Classroom> {
   static ClassroomDao obj;
-  private String filename = "classroom-v1.8.data";
-  private ArrayList<Classroom> list;
 
-  private ClassroomDao() {
-    this.load();
+  private ClassroomDao() throws Exception {
+    super("classroom-v1.9.data");
   }
   
-  public static ClassroomDao getInstance() {
+  public static ClassroomDao getInstance() throws Exception {
     if (obj == null) {
       obj = new ClassroomDao();
+      obj.load();
     }
     return obj;
-  }
-
-  @SuppressWarnings("unchecked")
-  private void load() {
-    try (
-      ObjectInputStream in = 
-          new ObjectInputStream(new FileInputStream(this.filename));) {
-      list = (ArrayList<Classroom>)in.readObject();
-    } catch (EOFException e) {
-      // 파일을 모두 읽었다.
-    } catch (FileNotFoundException e) {
-      list = new ArrayList<Classroom>();
-    } catch (Exception e) {
-      System.out.println("강의실 데이터 로딩 중 오류 발생!");
-    }
   }
 
   public synchronized void insert(Classroom classRoom) {
@@ -85,15 +63,5 @@ public class ClassroomDao {
       }
     }
     return false;
-  }
-
-  public void save() {
-    try (
-    ObjectOutputStream out = 
-        new ObjectOutputStream(new FileOutputStream(this.filename));) {
-    out.writeObject(list);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 }

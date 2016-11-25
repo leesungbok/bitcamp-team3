@@ -8,25 +8,25 @@ import bitcamp.java89.ems.server.dao.ContactDao;
 import bitcamp.java89.ems.server.vo.Contact;
 
 public class ContactUpdateController implements Command {
-  private ContactDao contactDao;
-
-  public ContactUpdateController() {
-    contactDao = ContactDao.getInstance();
-  }
-  
   public void service(HashMap<String,String> paramMap, PrintStream out) {
-    if (!contactDao.existEmail(paramMap.get("email"))) {
-        out.println("해당 이메일을 찾지 못했습니다.");
-        return;
-    }
+    try {
+      ContactDao contactDao = ContactDao.getInstance();
+      if (!contactDao.existEmail(paramMap.get("email"))) {
+          out.println("해당 이메일을 찾지 못했습니다.");
+          return;
+      }
+        
+      Contact contact = new Contact();
+      contact.setEmail(paramMap.get("email"));
+      contact.setName(paramMap.get("name"));
+      contact.setPosition(paramMap.get("position"));
+      contact.setTel(paramMap.get("tel"));
       
-    Contact contact = new Contact();
-    contact.setName(paramMap.get("email"));
-    contact.setName(paramMap.get("name"));
-    contact.setPosition(paramMap.get("position"));
-    contact.setTel(paramMap.get("tel"));
-    
-    contactDao.update(contact);
-    out.println("변경하였습니다.");
+      contactDao.update(contact);
+      out.println("변경하였습니다.");
+    } catch (Exception e) {
+      out.println("작업중 에러가 발생하였습니다.");
+      e.printStackTrace();
+    }
   }
 }
